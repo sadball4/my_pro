@@ -100,19 +100,20 @@ margin-left: 4px;
 				<h3>Sign In</h3>
 			</div>
 			<div class="card-body">
-				<form>
+				<form method="POST" action="<?php echo site_url('my_project_con/check');?>">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
 						<input name="username" id="username" type="text" class="form-control" placeholder="username">
-						
+						<?php echo form_error('username', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
 						<input name="password" id="password" type="password" class="form-control" placeholder="password">
+						<?php echo form_error('password', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 					</div>
 					<div class="row align-items-center remember">
 						<input type="checkbox">Remember Me
