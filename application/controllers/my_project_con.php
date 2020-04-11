@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 class My_project_con extends CI_Controller {
 
 	public function __construct() {
@@ -22,7 +23,8 @@ class My_project_con extends CI_Controller {
 	}
 	public function login_view()
 	{
-		$this->load->view('user/user_view');
+        $data['data_user'] = $this->session->userdata('logged_in');
+        $this->load->view('user/user_view',$data);
 	}
 	// register user //
 	public function register()
@@ -49,13 +51,7 @@ class My_project_con extends CI_Controller {
                     exit();
     }else{
             $this->load->view('welcome_message');
-            }
-
-
-
-
-
-
+         }
     }
 
     public function check(){
@@ -89,7 +85,10 @@ class My_project_con extends CI_Controller {
                    $sess_array = array(
                      'id' => $result['id'],
                      'username' =>$result['username'],
-                     'name' => $result['name']
+                     'name' => $result['name'],
+                     'email' => $result['email'],
+                     'create_at' => $result['create_at'],
+                     'update_at' => $result['update_at']
                  );
 
                  $this->session->set_userdata('logged_in', $sess_array);
@@ -107,7 +106,7 @@ class My_project_con extends CI_Controller {
      {
        $this->session->unset_userdata('logged_in');
        session_destroy();
-       redirect('login', 'refresh');
+       redirect('my_project_con', 'refresh');
      }
 
 
