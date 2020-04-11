@@ -1,3 +1,6 @@
+<?php
+	$this->load->view('head'); 
+?>
 <style>
 /* Made with love by Mutiullah Samim*/
 
@@ -89,20 +92,12 @@ color: white;
 margin-left: 4px;
 }
 </style>
-<?php
-	$this->load->view('head'); 
-?>
 <body>
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
 				<h3>Sign In</h3>
-				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
-				</div>
 			</div>
 			<div class="card-body">
 				<form>
@@ -132,7 +127,7 @@ margin-left: 4px;
 					Don't have an account?
 				</div>
 				<div class="d-flex justify-content-center">
-					<a href="#">Sign Up</a>
+					<a href="<?php echo site_url('welcome/register_view');?>">Sign Up</a>
 				</div>
 			</div>
 		</div>
