@@ -34,8 +34,27 @@ class My_project_model extends CI_Model {
 			return false;
 		}
 	}
-
-
+	// update user //
+	public function updatesave(){
+        $data = array(
+            'name'  => $this->input->post('name'),
+            'email' =>$this->input->post('email')
+        );
+        $this->db->where('id',$this->input->post('main_id'));
+        $this->db->set($data);
+        $this->db->update('User');
+        return true;
+    }
+	// update pass //
+	public function updatesave2(){
+        $data = array(
+            'password'  => $this->input->post('password')
+        );
+        $this->db->where('id',$this->input->post('main_id'));
+        $this->db->set($data);
+        $this->db->update('User');
+        return true;
+    }
 }
 
 ?>

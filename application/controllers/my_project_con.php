@@ -25,7 +25,19 @@ class My_project_con extends CI_Controller {
 	{
         $data['data_user'] = $this->session->userdata('logged_in');
         $this->load->view('user/user_view',$data);
-	}
+    }
+    public function update_infor()
+	{
+        $data['data_user_update'] = $this->session->userdata('logged_in');
+        //var_dump($data);
+        $this->load->view('user/update_infor',$data);
+    }
+    public function update_pass()
+	{
+        $data['data_password_update'] = $this->session->userdata('logged_in');
+        $this->load->view('user/update_pass',$data);
+    }
+    
 	// register user //
 	public function register()
 	{
@@ -85,6 +97,7 @@ class My_project_con extends CI_Controller {
                    $sess_array = array(
                      'id' => $result['id'],
                      'username' =>$result['username'],
+                     'password' =>$result['password'],
                      'name' => $result['name'],
                      'email' => $result['email'],
                      'create_at' => $result['create_at'],
@@ -108,7 +121,17 @@ class My_project_con extends CI_Controller {
        session_destroy();
        redirect('my_project_con', 'refresh');
      }
+     // update user //
+     public function updatesave(){
+        $this->my_project_model->updatesave();
+        redirect('my_project_con/login_view');
+    }
+    // update pass //
+    public function updatesave2(){
+        $this->my_project_model->updatesave2();
+        redirect('my_project_con/login_view');
 
+    }
 
 }
 

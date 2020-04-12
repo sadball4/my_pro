@@ -32,8 +32,8 @@
     <ul class="navbar-nav ml-auto">
     <li class="nav-item"><a class="nav-link" href="<?php echo site_url('my_project_con/login_view');?>"> Home Page </a></li>
     <li class="nav-item"><a class="nav-link" href="html-components.html"> Work record </a></li>
-    <li class="nav-item"><a class="nav-link" href="html-components.html"> Change personal information</a></li>
-    <li class="nav-item"><a class="nav-link" href="html-components.html"> Change password </a></li>
+    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('my_project_con/update_infor');?>"> Change personal information</a></li>
+    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('my_project_con/update_pass');?>"> Change password </a></li>
 
 <li class="nav-item"><a class="btn ml-2 btn-warning" href="<?php echo site_url('my_project_con/logout');?>">Logout</a></li>
     </ul>
