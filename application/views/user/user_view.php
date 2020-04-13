@@ -46,6 +46,35 @@
         </div>
     </div>
 </div>
+<br><br>
+<h2 class="text-left">Work to do </h2>
+<?php if($data_work!=''){?>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"> # </th>
+      <th scope="col">Title</th>
+      <th scope="col">date_alert</th>
+      <th scope="col">time_alert</th>
+      <th scope="col">location</th>
+    </tr>
+  </thead>
+  <tbody>
+      <?php  
+      $i = 1;
+      foreach($data_work->result_array() as $row){?>
+            <tr>
+      <th scope="row"><?php echo $i++;?></th>
+      <td><?php echo $row['title'];?></td>
+      <td><?php echo $row['date_alert']?></td>
+      <td><?php echo $row['time_alert'];?></td>
+      <td><?php echo $row['location'];?></td>
+    </tr>
+      <?php } ?>
+  </tbody>
+</table>
+<?php }else { echo "No work to do";} ?>
+
     </div>
 </body>
 <?php

@@ -24,6 +24,10 @@ class My_project_con extends CI_Controller {
 	public function login_view()
 	{
         $data['data_user'] = $this->session->userdata('logged_in');
+        $data['data_work'] = $this->my_project_model->show_work_to_do($data);
+        //var_dump($data);
+        //echo "<br>";
+        //echo $data["data_user"]["id"];
         $this->load->view('user/user_view',$data);
     }
     public function update_infor()
@@ -36,6 +40,13 @@ class My_project_con extends CI_Controller {
 	{
         $data['data_password_update'] = $this->session->userdata('logged_in');
         $this->load->view('user/update_pass',$data);
+    }
+    public function add_work()
+	{
+        $data['data_work'] = $this->session->userdata('logged_in');
+        //var_dump($data);
+        $data['data_show'] = $this->my_project_model->show_work();
+        $this->load->view('user/work_record',$data);
     }
     
 	// register user //
@@ -132,6 +143,33 @@ class My_project_con extends CI_Controller {
         redirect('my_project_con/login_view');
 
     }
+    // insert work record //
+	public function insert_work()
+	{
+		$data_work=array(
+			'title' => $this->input->post('title'),
+			'date_alert	'=>$this->input->post('date_alert'),
+			'time_alert'=>$this->input->post('time_alert'),
+			'location'=>$this->input->post('location'),
+			'date_add'=>$this->input->post('date_add'),
+			'id_user'=>$this->input->post('id_user')
+		);
+		
+		$this->my_project_model->insert_work($data_work); //เรียกใช้ function insert_register // function insert_register ใช้คำสั่ง insert ข้อมูลเข้าฐานข้อมูล แล้วเรียก array data_user นำข้อมูลที่ส่งมาจาก form มาใส่	
+        echo '<script> alert("เพิ่มข้อมูลของท่านเรียบร้อยแล้ว");</script>';
+        redirect('my_project_con/add_work');
+    }
+    // Del Work To Do //
+    public function delete($list){          //รับค่า username
+        $this->my_project_model->delete($list);   
+
+        redirect('my_project_con/add_work');
+    }
+     // update to do //
+     public function update_to_do(){
+        $this->my_project_model->update_to_do();
+        redirect('my_project_con/add_work');
+    }    
 
 }
 

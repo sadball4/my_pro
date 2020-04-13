@@ -22,6 +22,7 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<a class="navbar-brand" href="#">My Project LOGO</a>
@@ -31,7 +32,7 @@
   <div class="collapse navbar-collapse" id="navbar1">
     <ul class="navbar-nav ml-auto">
     <li class="nav-item"><a class="nav-link" href="<?php echo site_url('my_project_con/login_view');?>"> Home Page </a></li>
-    <li class="nav-item"><a class="nav-link" href="html-components.html"> Work record </a></li>
+    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('my_project_con/add_work');?>"> Work record </a></li>
     <li class="nav-item"><a class="nav-link" href="<?php echo site_url('my_project_con/update_infor');?>"> Change personal information</a></li>
     <li class="nav-item"><a class="nav-link" href="<?php echo site_url('my_project_con/update_pass');?>"> Change password </a></li>
 
