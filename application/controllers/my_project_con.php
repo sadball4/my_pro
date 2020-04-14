@@ -43,19 +43,34 @@ class My_project_con extends CI_Controller {
     }
     public function add_work()
 	{
+        $data['data_user'] = $this->session->userdata('logged_in');
         $data['data_work'] = $this->session->userdata('logged_in');
         //var_dump($data);
-        $data['data_show'] = $this->my_project_model->show_work();
+        $data['data_show'] = $this->my_project_model->show_work($data);
         $this->load->view('user/work_record',$data);
     }
     
 	// register user //
 	public function register()
 	{
+        $config['upload_path'] = 'upload';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size']     = '1000';
+        $new_name = time().$_FILES["picture"]['name'];
+        $config['file_name'] = $new_name;
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('picture'))
+        { //error                        
+        $data['error'] = $this->upload->display_errors();
+        //$this->load->view('user/addform_view',$data);
+        var_dump($data['error']);
+        exit('sdfdsfsdf');
+        }
+        $data_upload = array('upload_data' => $this->upload->data());
 		$data_user=array(
 			'name' => $this->input->post('name'),
 			'email'=>$this->input->post('email'),
-			'picture'=>$this->input->post('picture'),
+			'picture'=>$new_name,
 			'username'=>$this->input->post('username'),
 			'password'=>$this->input->post('password'),
 			'create_at'=>$this->input->post('create_at')
@@ -111,6 +126,7 @@ class My_project_con extends CI_Controller {
                      'password' =>$result['password'],
                      'name' => $result['name'],
                      'email' => $result['email'],
+                     'picture' => $result['picture'],
                      'create_at' => $result['create_at'],
                      'update_at' => $result['update_at']
                  );
@@ -135,12 +151,12 @@ class My_project_con extends CI_Controller {
      // update user //
      public function updatesave(){
         $this->my_project_model->updatesave();
-        redirect('my_project_con/login_view');
+        redirect('my_project_con');
     }
     // update pass //
     public function updatesave2(){
         $this->my_project_model->updatesave2();
-        redirect('my_project_con/login_view');
+        redirect('my_project_con');
 
     }
     // insert work record //

@@ -58,7 +58,8 @@ class My_project_model extends CI_Model {
         $this->db->insert('to_do_tbl',$data); //db ใช้เรียก database แล้วใช้คำสั่ง insert ในการเพิ่มข้อมูล
 	}	
 	// show work //
-	public function show_work(){
+	public function show_work($data){
+		$query2 = $this->db->where('id_user',$data["data_user"]["id"]); 
         $query2 = $this->db->get('to_do_tbl'); //select * from user_db;
         $row2 = $query2->num_rows();
         if($row2 == 0){

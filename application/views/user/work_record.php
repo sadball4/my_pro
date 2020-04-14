@@ -62,6 +62,7 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
     <button class="btn primary-button">Save Work</button>
 </form>
 <br><br>
+<?php if ($data_show!=''){?>
 <table class="table">
   <thead>
     <tr>
@@ -100,7 +101,7 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
             <div class="modal-body">
             <form method="POST" action="<?php echo site_url('my_project_con/update_to_do');?>">
               <div class="row">
-                    <input placeholder="main_list" name="main_list" id="main_list" type="text" value="<?php echo $row['list'];?>">  
+                    <input placeholder="main_list" name="main_list" id="main_list" type="text" value="<?php echo $row['list'];?>" hidden="">   
                     <input placeholder="Title" name="title" id="title" type="text" value="<?php echo $row['title'];?>">
                     <input placeholder="Date Aleat" name="date_alert" id="date_alert" type="date" value="<?php echo $row['date_alert'];?>">
                     <input placeholder="Time Aleat" name="time_alert" id="time_alert" type="time" value="<?php echo $row['time_alert'];?>">
@@ -125,6 +126,8 @@ input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
       <?php } ?>
   </tbody>
 </table>
+<?php }else { echo "No work to do";} ?>
+
 </body>
     <?php
     $this->load->view('user/footer_user');

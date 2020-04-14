@@ -100,7 +100,7 @@ margin-left: 4px;
 				<h3>Register</h3>
 			</div>
 			<div class="card-body">
-				<form method="POST" action="<?php echo site_url('my_project_con/register');?>">
+				<form method="POST" enctype="multipart/form-data" action="<?php echo site_url('my_project_con/register');?>">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-user-circle"></i></span>

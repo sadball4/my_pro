@@ -5,7 +5,7 @@
         .email-signature10{background:#fff;font-family:'Roboto Condensed',sans-serif;padding:50px 20px 15px 120px;box-shadow:10px 10px 3px rgba(0,0,0,.2);overflow:hidden;position:relative}
         .email-signature10:before{content:"";background:linear-gradient(to right,#f39c12 49%,#f1c40f 50%);width:18px;height:100%;position:absolute;top:0;left:0}
         .email-signature10 .signature-img{background:#fff;width:140px;height:140px;padding:3px;border-radius:50%;border:5px solid #f1c40f;overflow:hidden;position:absolute;top:15px;left:30px;z-index:1}
-        .email-signature10 .signature-img img{width:100%;height:auto;border-radius:50%}
+        .email-signature10 .signature-img img{width:100%;height:100%;border-radius:50%}
         .email-signature10 .signature-details{color:#fff;background:#3498db;text-align:center;padding:15px 10px 15px 50px;margin-bottom:20px;border-right:15px solid #2980b9}
         .email-signature10 .title{font-size:25px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin:0}
         .email-signature10 .post{font-size:16px;font-weight:400;text-transform:uppercase;letter-spacing:1px}
@@ -31,7 +31,7 @@
             <div class="col-md-offset-3 col-md-6 col-sm-offset-1 col-sm-10">
                 <div class="email-signature10">
                     <div class="signature-img">
-                        <img src="https://www.w3schools.com/bootstrap/img_avatar4.png" alt="">
+                        <img src="<?php echo base_url('upload/'.$data_user['picture']);?>" alt="">
                     </div>
                     <div class="signature-details">
                         <h2 class="title"><?php echo $data_user['name'];?></h2>
